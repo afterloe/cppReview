@@ -1,3 +1,7 @@
+/**
+ * c版本的 冒泡排序 
+ * 
+ */ 
 #include<stdio.h>
 
 int main() {
@@ -8,7 +12,7 @@ int main() {
 	for (a=array; a < (array + leng); a++) {
 		for (b=array; b < a; b++) {
 		  if (*a < *b) {
-				*a = *a + *b;
+				*a = *a + *b; // 不使用第三个变量实现 数值换位
 				*b = *a - *b;
 				*a = *a - *b;
 			}
