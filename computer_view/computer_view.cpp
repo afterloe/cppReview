@@ -49,7 +49,7 @@ cv::Mat preprocess_pic(cv::Mat source) {
 	cv::Mat grayImage, binImage;
 	cv::cvtColor(source, grayImage, cv::COLOR_BGR2GRAY);
 	// 阀值在148 ~ 160之间
-	cv::threshold(grayImage, binImage, 152, 255, cv::ThresholdTypes::THRESH_BINARY_INV);
+	cv::threshold(grayImage, binImage, 150, 255, cv::ThresholdTypes::THRESH_BINARY_INV);
 	return binImage;
 }
 
