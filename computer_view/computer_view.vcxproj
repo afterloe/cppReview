@@ -155,6 +155,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="computer_view.cpp" />
+    <ClCompile Include="MyRect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyRect.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

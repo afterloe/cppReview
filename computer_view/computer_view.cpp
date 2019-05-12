@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <opencv2/opencv.hpp>
+#include "MyRect.h"
 
 using namespace cv;
 using namespace std;
@@ -32,7 +33,7 @@ int main()
 
 	const string path = "G:\\plc资料\\照片\\IMG_20190422_181056.jpg";
 	cv::Mat p = preprocess_pic(cv::imread(path));
-	imgShow(p);
+//	imgShow(p);
 	p = findOutline(p);
 	imgShow(p);
 	return 0;
@@ -53,14 +54,46 @@ cv::Mat preprocess_pic(cv::Mat source) {
 }
 
 cv::Mat findOutline(cv::Mat source) {
-	cv::Mat conImage = cv::Mat::zeros(source.size(), source.type());
+//	cv::Mat conImage = cv::Mat::zeros(source.size(), source.type());
 	vector<vector<cv::Point>> contours;
 	vector<cv::Vec4i> hierarchy;
 	// 指定CV_RETR_EXTERNAL寻找数字的外轮廓
 	cv::findContours(source, contours, hierarchy, cv::RetrievalModes::RETR_EXTERNAL,
 		cv::ContourApproximationModes::CHAIN_APPROX_NONE);
-	cv::drawContours(conImage, contours, -1, (255, 255, 255));
-	return conImage;
+	// 绘制
+	cv::drawContours(source, contours, -1, (255, 255, 255));
+
+//	vector<MyRect> sort_rect;
+	vector<vector<cv::Point>>::iterator It;
+	std::cout << contours.size();
+	for (It = contours.begin(); It < contours.end(); It++) {
+		cv::Point2f vertex[4];
+		auto rect = cv::boundingRect(*It);
+		vertex[0] = rect.tl();
+		vertex[1].x = (float)rect.tl().x, vertex[1].y = (float)rect.br().y;
+		vertex[2] = rect.br();
+		vertex[3].x = (float)rect.br().x, vertex[3].y = (float)rect.tl().y;
+
+		for (int j = 0; j < 4; j++) {
+			cv::line(source, vertex[j], vertex[(j+1)%4], cv::Scalar(255,255,0), 1);
+		}
+//		auto tempRect = cv::boundingRect(*It);
+//		sort_rect.push_back(tempRect);
+	}
+
+/*
+	for (int i = 0; i < sort_rect.size(); i++) {
+		for (int j = i + 1; j < sort_rect.size(); j++) {
+			if (sort_rect[j] < sort_rect[i]) {
+				auto temp = sort_rect[j];
+				sort_rect[j] = sort_rect[i];
+				sort_rect[i] = temp;
+			}
+		}
+
+	}
+*/
+	return source;
 }
 
 void imgShow(cv::Mat source) {
