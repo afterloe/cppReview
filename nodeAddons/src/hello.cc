@@ -16,7 +16,7 @@ namespace demo {
 					isolate, "world", NewStringType::kNormal).ToLocalChecked());
 	}
 
-	void Initialize(Local<object> exports) {
+	void Initialize(Local<Object> exports) {
 		NODE_SET_METHOD(exports, "hello", Method);
 	}
 
