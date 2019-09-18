@@ -1,0 +1,16 @@
+{
+  "name": "nodeaddons",
+  "version": "1.0.0",
+  "description": "C++拓展测试",
+  "main": "addon.node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "keywords": [
+    "c++"
+  ],
+  "author": "afterloe@qq.com",
+  "license": "MIT",
+  "gypfile": true
+}
