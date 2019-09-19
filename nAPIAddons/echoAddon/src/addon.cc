@@ -2,13 +2,25 @@
 
 #include <node_api.h>
 
+
 namespace echo {
 
-	napi_value Method(napi_env, napi_callback_info args) {
-		napi_value greeting;
-		napi_status status;
+	Napi::Value Echo(const Napi::CallbackInfo& args) {
+		Napi::Env env = args.env();
 
-		status = napi_create_string_utf8(env, "");
+		if (0 == args.length()) {
+			Napi::TypeError::New(env, "必须输入arguments!")
+				.ThrowAsJavaScriptException();
+			return env.Null();
+		}
+
+		string receive = args[0].As<Napi::String>().Utf8Value();
+		return Napi::String::New(env, argcat("hahah, you say -> ", receive));
 	}
-}
 
+	Napi::Object Init(Napi::Env env, Napi::Object exception) {
+		exports.Set(Napi::String::New(env, "echo"), Napi::Function::New(env, Echo));
+	}
+
+	NODE_API_MODULE(addon, Init)
+}
