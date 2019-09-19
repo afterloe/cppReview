@@ -5,6 +5,16 @@
 
 namespace echo {
 
+	template<typename OS, typename T> void ostr(OS& o, T t) {
+		o << t;
+	}
+
+	template<typename... ARG> auto argcat(ARG... arg) -> string {
+		ostringstream os;
+		int arr[] = {(ostr(os, arg), 0)...};
+		return os.str();
+	}
+
 	Napi::Value Echo(const Napi::CallbackInfo& args) {
 		Napi::Env env = args.env();
 
