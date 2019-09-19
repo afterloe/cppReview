@@ -1,6 +1,7 @@
 // Function with argument - n-api
 
-#include <node_api.h>
+#include <napi.h>
+#include <std>
 
 
 namespace echo {
