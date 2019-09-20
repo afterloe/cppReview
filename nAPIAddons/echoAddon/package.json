@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "afterloe@qq.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^1.0.0"
+  }
 }
