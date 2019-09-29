@@ -8,5 +8,6 @@
 
 int main() {
     printf("This is my first c program. \n");
+    puts("ins is the best!");
     return 0;
 }
