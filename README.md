@@ -4,6 +4,10 @@
 > MIT License  
 > version 1.4
 
+# extern 关键字
+extern
+用于申明变量，如[代码3](./3-learn.c)的内容。也可以用于在一个源文件引用另一个源文件中的内容如代码4-1，4-2的内容。
+
 # gcc编译两个文件
 ```bash
 # gcc 4-1-learn.c 4-2-learn.c -o ./out/4.out
