@@ -21,15 +21,16 @@ int main() {
 
 void generatorArr(int* arr) {
     srand((unsigned) time(NULL));
-    auto index = 0;
-    for(; index< SIZE; index++) {
-        arr[index] = rand();
+    for(auto i= 0; i< SIZE; i++) {
+        *arr = rand();
+        arr++;
     }
 }
 
-void printfArr(int arr[]) {
+void printfArr(int* arr) {
     for (auto i= 0; i< SIZE; i++) {
-        std::cout<< arr[i] << " ";
+        std::cout<< *arr << " ";
+        arr++;
     }
     std::cout << std::endl;
 }
@@ -38,10 +39,14 @@ void sortArr(int* arr) {
     auto i = 0;
     for(;i< SIZE; i++) {
         for(auto j= 0; j< i+1; j++) {
-            if (arr[j] > arr[i]) {
-                arr[j] = arr[i] + arr[j];
-                arr[i] = arr[j] - arr[i];
-                arr[j] = arr[j] - arr[i];
+            // 调整为指针运算
+            if (*(arr + j) > *(arr + i)) {
+                *(arr + j) = *(arr + i) + *(arr + j);
+                *(arr + i) = *(arr + j) - *(arr + i);
+                *(arr + j) = *(arr + j) - *(arr + i);
+                //arr[j] = arr[i] + arr[j];
+                //arr[i] = arr[j] - arr[i];
+                //arr[j] = arr[j] - arr[i];
             }
         }
     }
