@@ -39,10 +39,14 @@ void sortArr(int* arr) {
     auto i = 0;
     for(;i< SIZE; i++) {
         for(auto j= 0; j< i+1; j++) {
-            if (arr[j] > arr[i]) {
-                arr[j] = arr[i] + arr[j];
-                arr[i] = arr[j] - arr[i];
-                arr[j] = arr[j] - arr[i];
+            // 调整为指针运算
+            if (*(arr + j) > *(arr + i)) {
+                *(arr + j) = *(arr + i) + *(arr + j);
+                *(arr + i) = *(arr + j) - *(arr + i);
+                *(arr + j) = *(arr + j) - *(arr + i);
+                //arr[j] = arr[i] + arr[j];
+                //arr[i] = arr[j] - arr[i];
+                //arr[j] = arr[j] - arr[i];
             }
         }
     }
