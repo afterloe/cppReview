@@ -21,6 +21,7 @@ int* getRandom() {
 
     static int r[SIZE];
     int i;
+    // 初始化 随机数发生器， 配合产生随机数序列
     srand((unsigned)time(NULL));
     for (i= 0; i< SIZE; i++) {
         r[i] = rand();
