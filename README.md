@@ -74,7 +74,7 @@ lu 为 32位无符号整数，用于`printf("%lu");`中使用。
 
 ## Boost
 boost 是一个c++不错的轮子，使用方法如下
-- download (boost)[https://www.boost.org/]
+- download [boost](https://www.boost.org/)
 > 我下载的是boost_1_71_0.tar.gz, 以下命令可能跟以往的不一样
 ```sbtshell
 $ tar -xzvf boost_1_71_0.tar.gz && cd boost_1_71_0
