@@ -71,3 +71,18 @@ lu 为 32位无符号整数，用于`printf("%lu");`中使用。
 
 ### 线程
 如果设置为 PTHREAD_CREATE_JOINABLE，则使用 pthread_join() 来等待和释放资源，否则会内存泄露。
+
+## Boost
+boost 是一个c++不错的轮子，使用方法如下
+- download (boost)[https://www.boost.org/]
+> 我下载的是boost_1_71_0.tar.gz, 以下命令可能跟以往的不一样
+```sbtshell
+$ tar -xzvf boost_1_71_0.tar.gz && cd boost_1_71_0
+$ ./bootstrap.sh --prefix=path/to/installation/prefix // prefix的值是你希望安装boost的路径, 不开启此参数的话默认安装在 /usr/local 下
+$ ./b2 install
+```
+> ~会被当成一个'~'目录， 因为编译脚本不识别
+使用g++对文件进行编译 `g++ -o ./main.out -w -Wall -std=c++17 1-learn.cpp -I ../../lib/include/` 其中include就是boost经过b2 install后的目录
+```sbtshell
+$ g++ test.cpp -o test -I /home/xzz/boost_1_56_0/include -L -static /home/xzz/boost_1_56_0/lib -lboost_system -lboost_filesystem
+```
