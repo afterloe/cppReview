@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 
+// c11 中的线程使用
 std::thread::id main_thread_id = std::this_thread::get_id();
 
 void hello(void);
@@ -9,7 +10,9 @@ void pause_thread(const int&);
 int main() {
 
     std::thread t(hello);
+    // 可以并发执行的线程数量(不准确)
     std::cout << t.hardware_concurrency() << std::endl;
+    // 可以滨发展新的数量 (不准确)
     std::cout << "native_handle " << t.native_handle() << std::endl;
     t.join();
     std::thread a(hello);
