@@ -37,7 +37,7 @@ int main() {
     }
 
     cout << "Main program exiting." << endl;
-    pthread_exit(NULL);
+    pthread_exit(nullptr);
 
     return 0;
 }
@@ -47,5 +47,5 @@ void* wait(void* arg) {
     sleep(1);
     cout << "Sleeping in thread" << endl;
     cout << "Thread with id: " << tid << " ...exiting" << endl;
-    pthread_exit(NULL);
+    pthread_exit(nullptr);
 }

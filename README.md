@@ -68,3 +68,6 @@ lu 为 32位无符号整数，用于`printf("%lu");`中使用。
 
 ### 宏
 \#define 定义，不用配置类型，不用以分号结尾。 可以直接使用，另宏亦可定义一个带有参数的宏如`#define MIN(a,b) (a<b? a:b)`
+
+### 线程
+如果设置为 PTHREAD_CREATE_JOINABLE，则使用 pthread_join() 来等待和释放资源，否则会内存泄露。
